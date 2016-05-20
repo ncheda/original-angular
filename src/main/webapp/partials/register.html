@@ -1,0 +1,49 @@
+<div class="page-header">
+	<h2>Nuevo Usuario</h2>
+</div>
+
+<div class="row">
+
+	<div class="col-md-6">
+		<form name="form" novalidate class="form-horizontal">
+			<div class="form-group" ng-class="{ 'has-error' : form.username.$invalid && !form.username.$pristine }">
+				<label for="username"  class="col-sm-3 control-label">Email:</label>
+				<div class="col-sm-9">
+					<input id="username" name="username" type="email" ng-model="username" type="text" class="form-control" />
+					<div ng-show="form.username.$invalid && !form.username.$pristine" ng-messages="form.username.$error">
+						<div  ng-messages-include="partials/messages.html"></div>
+					</div>
+				</div>
+
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : form.password.$invalid && !form.password.$pristine }">
+				<label for="password" class="col-sm-3 control-label">Password:</label>
+				<div class="col-sm-9">
+					<input id="password" name="password" ng-pattern="/^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/" ng-model="password" type="password" required class="form-control" />
+					<div ng-show="form.password.$invalid && !form.password.$pristine" ng-messages="form.password.$error">
+						<div  ng-messages-include="partials/messages.html"></div>
+					</div>
+				</div>
+
+			</div>
+			<div  class="form-group" ng-class="{ 'has-error' : form.password2.$invalid && !form.password2.$pristine }">
+				<label for="password2" class="col-sm-3 control-label">Confirmar Password:</label>
+				<div class="col-sm-9">
+					<input id="password2" name="password2" ng-model="password2" type="password" class="form-control" required  compare="password"   placeholder="Repetir password"/>
+					<div ng-show="form.password2.$invalid && !form.password2.$pristine" ng-messages="form.password2.$error">
+						<div  ng-messages-include="partials/messages.html"></div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-sm-9 col-sm-offset-3">
+					<input type="submit" value="Registrarse" ng-disabled="form.$invalid" class="btn btn-primary" ng-click="register()"/>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+</div>
